@@ -1,4 +1,4 @@
 # Dependencias de la interfaz (el núcleo no tiene dependencias externas).
 customtkinter>=5.2,<6
-pystray>=0.19,<1
+pystray>=0.19.5,<1
 pillow>=13,<14
