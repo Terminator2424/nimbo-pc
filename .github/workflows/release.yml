@@ -1,0 +1,36 @@
+name: Release (.exe)
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+jobs:
+  exe:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python -m pip install -r requirements.txt pyinstaller
+      - run: python -m unittest discover -s tests -t .
+      - name: SBOM (lista de componentes con versiones exactas)
+        run: |
+          python -m pip install cyclonedx-bom
+          python -m cyclonedx_py environment --of JSON -o dist-sbom.cdx.json
+      - run: python -m PyInstaller --noconsole --onefile --name Nimbo --collect-all customtkinter --hidden-import pystray._win32 --clean -y app.py
+      - run: python -m PyInstaller --console --onefile --name Nimbo-cli --collect-all customtkinter --hidden-import pystray._win32 -y app.py
+      - name: SHA-256
+        shell: pwsh
+        run: "Nimbo.exe","Nimbo-cli.exe" | ForEach-Object { (Get-FileHash "dist\$_" -Algorithm SHA256).Hash + "  $_" } | Out-File dist\SHA256SUMS.txt -Encoding ascii
+      - uses: actions/attest-build-provenance@v2
+        with: { subject-path: dist/*.exe }
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/Nimbo.exe
+            dist/Nimbo-cli.exe
+            dist/SHA256SUMS.txt
+            dist-sbom.cdx.json

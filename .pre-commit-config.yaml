@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: python -m mypy nimbo
+        language: system
+        pass_filenames: false
+      - id: bandit
+        name: bandit
+        entry: python -m bandit -q -r nimbo -c pyproject.toml
+        language: system
+        pass_filenames: false
+      - id: tests
+        name: unittest
+        entry: python -m unittest discover -s tests -t .
+        language: system
+        pass_filenames: false

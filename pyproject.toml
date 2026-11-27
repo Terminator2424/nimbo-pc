@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nimbo"
+version = "0.6.1"
+description = "Organizador autónomo de archivos para Windows: seguro, auditable y reversible."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []          # el núcleo usa solo la biblioteca estándar
+
+[project.optional-dependencies]
+ui = ["customtkinter>=5.2", "pystray>=0.19", "pillow>=10"]
+pdf = ["pypdf>=4"]
+dev = ["ruff", "mypy", "bandit", "coverage", "pip-audit", "pyinstaller"]
+
+[project.scripts]
+nimbo = "nimbo.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["nimbo*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "SIM", "C4", "PIE", "RET", "PL"]
+ignore = ["PLR0913", "PLR0912", "PLR0915", "PLR2004", "PLR0911", "SIM105", "RET504", "E501", "PLC0415", "PLW2901", "PLR0917"]  # PLR0917: API interna; ver docs/ROADMAP.md
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B", "PLC", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+platform = "win32"          # destino real: Windows (winreg, ctypes.windll)
+ignore_missing_imports = true
+warn_unused_ignores = true
+check_untyped_defs = true
+no_implicit_optional = true
+
+[tool.coverage.run]
+source = ["nimbo"]
+omit = ["nimbo/ui.py", "nimbo/autostart.py"]   # requieren pantalla/Windows; ver docs/AUDIT.md
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+
+[tool.bandit]
+exclude_dirs = ["tests", "build", "dist"]

@@ -1,0 +1,17 @@
+Nimbo - instalación en 3 pasos
+=================================
+1) Extrae TODO el zip en una carpeta corta, por ejemplo  C:\Nimbo
+   (clic derecho -> Extraer todo; no lo ejecutes desde dentro del zip).
+2) Doble clic en  INSTALAR.bat  y espera (5-10 minutos la primera vez; descarga dependencias y crea el .exe).
+   Si Python no está instalado, intenta instalarlo solo con winget.
+3) Al terminar se abre Nimbo. Busca su ícono junto al reloj.
+
+Al empezar NO mueve nada (solo simula). Para que ordene de verdad: pestaña "Vigilante" -> "Mover de verdad".
+Todo lo que mueve queda en "Historial" y se deshace con un botón.
+
+Si falla: abre instalacion.log (en esta misma carpeta) y mándalo.
+Windows puede avisar de que el .exe no es de un editor conocido: pasa porque no está firmado.
+Como lo creas tú mismo en tu PC, normalmente no sale el aviso de SmartScreen.
+
+Para quitarlo: DESINSTALAR.bat
+Documentación completa: README.md y carpeta docs\
