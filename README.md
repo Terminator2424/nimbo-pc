@@ -1,9 +1,5 @@
 # Nimbo
 
-[![CI](https://github.com/TU_USUARIO/nimbo-pc/actions/workflows/ci.yml/badge.svg)](https://github.com/TU_USUARIO/nimbo-pc/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/TU_USUARIO/nimbo-pc/actions/workflows/codeql.yml/badge.svg)](https://github.com/TU_USUARIO/nimbo-pc/actions/workflows/codeql.yml)
-![Python](https://img.shields.io/badge/python-3.11%2B-blue) ![Licencia](https://img.shields.io/badge/licencia-MIT-green)
-
 *Interfaz estilo iOS: modo claro/oscuro, color de acento a elección (`python -m nimbo theme --preset rose`).*
 
 Organizador autónomo de archivos para Windows. **Seguro por diseño**: nunca borra, nunca sobrescribe,
