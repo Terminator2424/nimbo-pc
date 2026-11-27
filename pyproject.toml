@@ -13,7 +13,7 @@ dependencies = []          # el núcleo usa solo la biblioteca estándar
 
 [project.optional-dependencies]
 ui = ["customtkinter>=5.2", "pystray>=0.19", "pillow>=10"]
-pdf = ["pypdf>=4"]
+pdf = ["pypdf>=7.1.1"]
 dev = ["ruff", "mypy", "bandit", "coverage", "pip-audit", "pyinstaller"]
 
 [project.scripts]
