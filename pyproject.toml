@@ -12,7 +12,7 @@ license = { text = "MIT" }
 dependencies = []          # el núcleo usa solo la biblioteca estándar
 
 [project.optional-dependencies]
-ui = ["customtkinter>=5.2", "pystray>=0.19", "pillow>=10"]
+ui = ["customtkinter>=6.0.0", "pystray>=0.19", "pillow>=10"]
 pdf = ["pypdf>=4"]
 dev = ["ruff", "mypy", "bandit", "coverage", "pip-audit", "pyinstaller"]
 
