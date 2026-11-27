@@ -1,4 +1,5 @@
 # Nimbo
+<img width="800" height="537" alt="nimbo_demo" src="https://github.com/user-attachments/assets/2ea5dcc7-f3f0-4621-9ac6-b818ca0a5029" />
 
 *Interfaz estilo iOS: modo claro/oscuro, color de acento a elección (`python -m nimbo theme --preset rose`).*
 
